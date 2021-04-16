@@ -13,4 +13,9 @@ and put
 export let token:string = "" // your discord token
 ```
 
+and finally run
+```
+deno run -A -q mod.ts
+```
+
 
