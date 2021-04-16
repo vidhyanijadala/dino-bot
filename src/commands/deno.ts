@@ -12,7 +12,7 @@ createCommand({
     write.then(() => console.log("archive edited!"));
 
     const cmd = Deno.run({
-      cmd: ["deno", "run", "-A", "execute.ts"],
+      cmd: ["deno", "run", "execute.ts"],
       stdout: "piped",
       stderr: "piped", // here execute de archive
     });
