@@ -27,7 +27,6 @@ createCommand({
 
     const embed = new Embed()
       .setColor("random")
-      .setDescription("\`\`\` output program: \`\`\`")
       .setDescription(`\`\`\` ${output}  \`\`\``)
       .setTimestamp();
 
