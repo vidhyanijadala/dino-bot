@@ -28,6 +28,7 @@ createCommand({
     const embed = new Embed()
       .setColor("random")
       .setDescription(`\`\`\` ${output}  \`\`\``)
+      .addField("output", `v${Deno.version.deno}`, true)
       .setTimestamp();
 
     return message.send({ embed });
