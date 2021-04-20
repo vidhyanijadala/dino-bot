@@ -1,9 +1,7 @@
 import { botCache, cache } from "../../deps.ts";
 import { createCommand } from "../utils/helpers.ts";
 import { Embed } from "./../utils/Embed.ts";
-//import { kill } from 'https://deno.land/x/process@v0.3.0/mod.ts'
-//import { sleep } from "https://deno.land/x/sleep/mod.ts";
-//import { exec } from "https://deno.land/x/exec/mod.ts";
+import { sleep } from "https://deno.land/x/sleep/mod.ts";
 
 createCommand({
   name: "deno",
@@ -19,16 +17,17 @@ createCommand({
       stdout: "piped",
       stderr: "piped", // here execute de archive
     });
-    //    await sleep(1)
+    await sleep(1);
+    Deno.kill(cmd.pid, Deno.Signal.SIGINT); // kill the procces
 
     const rawOutput = await cmd.output();
     cmd.close();
-    const output:string = new TextDecoder().decode(rawOutput); // here decode de output hex => text
+    const output: string = new TextDecoder().decode(rawOutput); // here decode de output hex => text
 
     const embed = new Embed()
       .setColor("random")
       .setDescription(`\`\`\` ${output}  \`\`\``)
-      .addField("output", `v${Deno.version.deno}`, true)
+      .addField("killed procces", `v${Deno.version.deno}`, true)
       .setTimestamp();
 
     return message.send({ embed });
