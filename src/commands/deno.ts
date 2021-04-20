@@ -17,8 +17,8 @@ createCommand({
       stdout: "piped",
       stderr: "piped", // here execute de archive
     });
-    await sleep(1);
-    Deno.kill(cmd.pid, Deno.Signal.SIGINT); // kill the procces
+    //await sleep(1);  for now does not kill the procces
+    //Deno.kill(cmd.pid, Deno.Signal.SIGINT); // kill the procces
 
     const rawOutput = await cmd.output();
     cmd.close();
