@@ -13,22 +13,25 @@ createCommand({
     write.then(() => console.log("archive edited!"));
 
     const cmd = Deno.run({
-      cmd: ["deno", "run", "execute.ts"],
-      stdout: "piped",
-      stderr: "piped", // here execute de archive
-    });
+       cmd: ["deno", "run", "--no-check", `execute.ts`],
+       env: {
+        NO_COLOR: "1",
+       },
+       stderr: "piped",
+       stdout: "piped",
+       stdin: "null",
+       });
 
     const rawOutput = await cmd.output();
     const rawError = await cmd.stderrOutput();
     cmd.close();
     const errorOutput: string = new TextDecoder().decode(rawError);
     const output: string = new TextDecoder().decode(rawOutput); // here decode de output hex => text
-
     const embed = new Embed()
       .setColor("random")
       .addField(
-        `deno error output: ${errorOutput}`,
-        `v${Deno.version.deno}`,
+        `deno output:  ${errorOutput}`,
+        `v${Deno.version.deno} `,
         true,
       )
       .setDescription(`\`\`\` ${output}  \`\`\``)
