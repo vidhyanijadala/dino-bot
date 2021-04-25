@@ -17,17 +17,21 @@ createCommand({
       stdout: "piped",
       stderr: "piped", // here execute de archive
     });
-    //await sleep(1);  for now does not kill the procces
-    //Deno.kill(cmd.pid, Deno.Signal.SIGINT); // kill the procces
 
     const rawOutput = await cmd.output();
+    const rawError = await cmd.stderrOutput();
     cmd.close();
+    const errorOutput: string = new TextDecoder().decode(rawError);
     const output: string = new TextDecoder().decode(rawOutput); // here decode de output hex => text
 
     const embed = new Embed()
       .setColor("random")
+      .addField(
+        `deno error output: ${errorOutput}`,
+        `v${Deno.version.deno}`,
+        true,
+      )
       .setDescription(`\`\`\` ${output}  \`\`\``)
-      .addField("killed procces", `v${Deno.version.deno}`, true)
       .setTimestamp();
 
     return message.send({ embed });
