@@ -10,7 +10,7 @@ import { registerTasks } from "./../utils/taskHelper.ts";
 botCache.eventHandlers.ready = function () {
   editBotsStatus(
     StatusTypes.DoNotDisturb,
-    "hacking on deno",
+    `*help | in ${cache.guilds.size.toLocaleString()} servers!`,
     ActivityType.Game,
   );
 
