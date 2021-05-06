@@ -9,9 +9,6 @@ createCommand({
   botChannelPermissions: ["SEND_MESSAGES"],
   arguments: [{ name: "input", type: "...string", required: true }],
   execute: async function (message, args) {
-    if (args.input.includes("import")) {
-      return message.send("no imports for you");
-    }
     const write = Deno.writeTextFile("./execute.ts", `${args.input}`); // here are going to write the archive to the execute.ts
     write.then(() => console.log("archive edited!"));
 
