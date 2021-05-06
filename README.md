@@ -10,12 +10,12 @@ a bot that execute deno and send you the output
 
 <img src="./img/secure.png">
 
-create a archive call token.ts
+create a archive .env
 
 and put
 
 ```
-export let token:string = "" // your discord token
+TOKEN=yourtoken
 ```
 
 and finally run
