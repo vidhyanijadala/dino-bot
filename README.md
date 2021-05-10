@@ -18,7 +18,8 @@ and put
 TOKEN=yourtoken
 ```
 
-and finally run
+and finally run:
+
 ```
 deno run -A -q --unstable mod.ts
 ```
