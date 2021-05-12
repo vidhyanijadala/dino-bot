@@ -1,1 +1,1 @@
-console.log("hi from deno")
+console.log("a")

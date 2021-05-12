@@ -10,6 +10,9 @@ a bot that execute deno and send you the output
 
 <img src="./img/secure.png">
 
+
+<h1>run it locally?</h1>
+
 create a archive .env
 
 and put
@@ -22,6 +25,13 @@ and finally run:
 
 ```
 deno run -A -q --unstable mod.ts
+```
+
+or if you want to run it with docker just run:
+
+```
+sudo docker build -t deno-bot . && sudo docker run deno-bot
+
 ```
 
 
