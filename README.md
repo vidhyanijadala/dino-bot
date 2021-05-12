@@ -30,7 +30,7 @@ deno run -A -q --unstable mod.ts
 or if you want to run it with docker just run:
 
 ```
-sudo docker build -t deno-bot . && sudo docker run deno-bot
+sudo docker build -t deno-bot . && sudo docker run -d deno-bot
 
 ```
 
