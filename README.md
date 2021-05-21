@@ -4,14 +4,14 @@
 **To start using dino [just click on this link](https://discord.com/api/oauth2/authorize?client_id=830530080349749248&permissions=59392&scope=bot) and add it to your server!**
 a bot that execute deno and send you the output
 
-<img src="./img/example-deno1.png">
+<img src="./img/dino.png">
 
 - secure by default
 
 <img src="./img/secure.png">
 
 
-<h1>run it locally?</h1>
+<h1>want to run it locally?</h1>
 
 create a archive .env
 
