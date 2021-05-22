@@ -32,7 +32,7 @@ createCommand({
     const embed = new Embed()
       .setColor("random")
       .addField(`deno output:  ${errorOutput}`, `v${Deno.version.deno} `, true)
-      .setDescription(["```", ${output}, "```"].join(\n))
+      .setDescription("```\n" + output + "```")
       .setTimestamp();
 
     return message.send({ embed });
