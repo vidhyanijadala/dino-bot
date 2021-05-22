@@ -1,5 +1,4 @@
-
-FROM hayd/debian-deno:latest
+FROM hayd/debian-deno:1.10.2
 
 WORKDIR /deno-bot
 
@@ -12,6 +11,3 @@ RUN chown -R deno:deno /deno-bot
 USER deno
 
 CMD ["run", "-A","--unstable", "./mod.ts"]
-
-
-
