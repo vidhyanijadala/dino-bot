@@ -21,7 +21,7 @@ createCommand({
       stdout: "piped",
       stdin: "null",
     });
-    await sleep(2);
+    await sleep(1);
     Deno.kill(cmd.pid, Deno.Signal.SIGINT); // kill the procces
 
     const rawOutput = await cmd.output();
