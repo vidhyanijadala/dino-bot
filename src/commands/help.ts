@@ -2,7 +2,7 @@ import { createCommand } from "../utils/helpers.ts";
 import { Embed } from "./../utils/Embed.ts";
 
 createCommand({
-  name: `help`,
+  name: "help",
   description: "commands/help:DESCRIPTION",
   botChannelPermissions: ["SEND_MESSAGES"],
   execute: function (message) {

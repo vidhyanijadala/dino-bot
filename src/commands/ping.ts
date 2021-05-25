@@ -1,7 +1,7 @@
 import { createCommand } from "../utils/helpers.ts";
 
 createCommand({
-  name: `ping`,
+  name: "ping",
   description: "commands/ping:DESCRIPTION",
   botChannelPermissions: ["SEND_MESSAGES"],
   execute: function (message) {
