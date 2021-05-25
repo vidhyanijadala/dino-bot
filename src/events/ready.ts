@@ -11,12 +11,10 @@ botCache.eventHandlers.ready = function () {
   editBotsStatus(
     StatusTypes.DoNotDisturb,
     `*help | in ${cache.guilds.size.toLocaleString()} servers!`,
-    ActivityType.Game,
+    ActivityType.Game
   );
 
   registerTasks();
 
-  console.log(
-    `BOT ON ${cache.guilds.size} guild(s)!`,
-  );
+  console.log(`BOT ON ${cache.guilds.size} guild(s)!`);
 };

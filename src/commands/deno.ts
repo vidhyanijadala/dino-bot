@@ -1,4 +1,3 @@
-import { botCache, cache } from "../../deps.ts";
 import { createCommand, filterCodeBlock } from "../utils/helpers.ts";
 import { Embed } from "./../utils/Embed.ts";
 import { sleep } from "https://deno.land/x/sleep/mod.ts";
@@ -9,7 +8,10 @@ createCommand({
   botChannelPermissions: ["SEND_MESSAGES"],
   arguments: [{ name: "input", type: "...string", required: true }],
   execute: async function (message, args) {
-    const write = Deno.writeTextFile("./execute.ts", `${filterCodeBlock(args.input)}`); // here are going to write the archive to the execute.ts
+    const write = Deno.writeTextFile(
+      "./execute.ts",
+      `${filterCodeBlock(args.input)}`
+    ); // here are going to write the archive to the execute.ts
     write.then(() => console.log("archive edited!"));
 
     const cmd = Deno.run({
