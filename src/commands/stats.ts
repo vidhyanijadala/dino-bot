@@ -3,7 +3,7 @@ import { botID, cache } from "../../deps.ts";
 import { createCommand } from "../utils/helpers.ts";
 
 createCommand({
-  name: `stats`,
+  name: "stats",
   guildOnly: true,
   execute: (message) => {
     let totalMemberCount = 0;
@@ -17,7 +17,7 @@ createCommand({
     const embed = new Embed()
       .setAuthor(
         `${message.guild?.botMember?.nick || message.guild?.bot?.tag} Stats`,
-        message.guild?.bot?.avatarURL,
+        message.guild?.bot?.avatarURL
       )
       .setColor("random")
       .addField("Guilds:", cache.guilds.size.toLocaleString(), true)

@@ -1,7 +1,7 @@
 import { createCommand } from "../utils/helpers.ts";
 
 createCommand({
-  name: `avatar`,
+  name: "avatar",
   guildOnly: true,
   execute: (message) => {
     const memberID = message.mentions[0] || message.author.id;
