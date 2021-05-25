@@ -339,8 +339,8 @@ export async function createEmbedsPagination(
 export function filterCodeBlock(input: string): string {
   let trimmed = input.trim();
 
-  if ((trimmed.startsWith("```typescript") || trimmed.startsWith("```javascript")) && trimmed.endsWith("```")) {
-    return trimmed.substring(13, trimmed.length - 3); 
+  if ((trimmed.startsWith("```ts") || trimmed.startsWith("```js")) && trimmed.endsWith("```")) {
+    return trimmed.substring(5, trimmed.length - 3); 
   } else if (trimmed.startsWith("```") && trimmed.endsWith("```")) {
     return trimmed.substring(3, trimmed.length - 3);
   }
