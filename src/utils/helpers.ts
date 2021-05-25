@@ -331,3 +331,19 @@ export async function createEmbedsPagination(
     }
   }
 }
+
+/*
+** Filters out a markdown code block from the input and returns only the code.
+** If a code block isn't found then it will return the input unmodified.
+*/
+export function filterCodeBlock(input: string): string {
+  let trimmed = input.trim();
+
+  if ((trimmed.startsWith("```typescript") || trimmed.startsWith("```javascript")) && trimmed.endsWith("```")) {
+    return trimmed.substring(13, trimmed.length - 3); 
+  } else if (trimmed.startsWith("```") && trimmed.endsWith("```")) {
+    return trimmed.substring(3, trimmed.length - 3);
+  }
+
+  return input;
+}
