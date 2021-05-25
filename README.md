@@ -15,7 +15,7 @@ a bot that execute deno and send you the output
 
 <img src="https://cdn.discordapp.com/attachments/809999884820021252/846719820409077820/unknown.png">
 
-<img src=https://media.discordapp.net/attachments/809999884820021252/846719911593771058/unknown.png?width=210&height=77>
+<img src="https://media.discordapp.net/attachments/809999884820021252/846719911593771058/unknown.png?width=210&height=77">
 
 
 
