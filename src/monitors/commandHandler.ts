@@ -208,7 +208,11 @@ botCache.monitors.set("commandHandler", {
     const botMention = `<@!${botID}>`;
 
     // If the message is not using the valid prefix or bot mention cancel the command
-    if (message.content.startsWith(botMention)) prefix = botMention;
+    if (message.content === botMention) {
+      return message.reply(parsePrefix(message.guildID)).catch((err) =>
+        console.log(`Could not reply to bot mention: ${err.message}`)
+      );
+    } else if (message.content.startsWith(botMention)) prefix = botMention;
     else if (!message.content.startsWith(prefix)) return;
 
     // Get the first word of the message without the prefix so it is just command name. `!ping testing` becomes `ping`

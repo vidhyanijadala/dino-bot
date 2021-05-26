@@ -1,2 +1,4 @@
 
-aaa
+for(let i =0;i<10;i++){
+console.log("\n",1+2)
+}
