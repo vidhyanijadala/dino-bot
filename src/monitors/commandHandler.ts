@@ -10,7 +10,6 @@ import {
   black,
   botCache,
   botID,
-  cache,
   green,
   Guild,
   Message,
@@ -209,12 +208,8 @@ botCache.monitors.set("commandHandler", {
     const botMention = `<@!${botID}>`;
 
     // If the message is not using the valid prefix or bot mention cancel the command
-    /*
-    if (message.content === botMention) {
-      return message.reply(parsePrefix(message.guildID));
-    } else if (message.content.startsWith(botMention)) prefix = botMention;   <-- this have a little bug that the bot crash if doesent have perms
+    if (message.content.startsWith(botMention)) prefix = botMention;
     else if (!message.content.startsWith(prefix)) return;
-    */
 
     // Get the first word of the message without the prefix so it is just command name. `!ping testing` becomes `ping`
     const [commandName, ...parameters] = message.content.substring(
