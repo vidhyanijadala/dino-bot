@@ -2,3 +2,4 @@ db
 fileloader.ts
 .env
 .vscode
+execute.ts

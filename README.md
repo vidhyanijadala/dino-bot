@@ -17,6 +17,8 @@ and put
 TOKEN=yourtoken
 ```
 
+then create a archive ``execute.ts`` that is where the code is going to execute
+
 and finally run:
 
 ```
