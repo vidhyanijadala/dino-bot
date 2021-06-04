@@ -15,7 +15,7 @@ createCommand({
     write.then(() => console.log("archive edited!"));
 
     const cmd = Deno.run({
-      cmd: ["deno", "run", "--no-check", `execute.ts`],
+      cmd: ["deno", "run","--allow-net", "--no-check", `execute.ts`],
       env: {
         NO_COLOR: "1",
       },
