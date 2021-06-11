@@ -9,13 +9,15 @@
 
 <h1>want to run it locally?</h1>
 
-create a archive .env
-
-and put
+first you need deno 1.10.3 or earlier
 
 ```
-TOKEN=yourtoken
+deno upgrade --version 1.10.3  
 ```
+
+then create a archive .env
+
+and put ```TOKEN=yourtoken``` that is where your going to put the token
 
 then create a archive ``execute.ts`` that is where the code is going to execute
 
