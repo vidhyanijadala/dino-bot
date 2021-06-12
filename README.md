@@ -9,13 +9,7 @@
 
 <h1>want to run it locally?</h1>
 
-first you need deno 1.10.3 or earlier
-
-```
-deno upgrade --version 1.10.3  
-```
-
-then create a archive .env
+first create a .env 
 
 and put ```TOKEN=yourtoken``` that is where your going to put the token
 
@@ -24,7 +18,7 @@ then create a archive ``execute.ts`` that is where the code is going to execute
 and finally run:
 
 ```
-deno run -A -q --unstable mod.ts
+deno run -A -q --unstable --no-check mod.ts
 ```
 
 or if you want to run it with docker just run:

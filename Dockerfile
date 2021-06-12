@@ -10,4 +10,4 @@ RUN chown -R deno:deno /deno-bot
 
 USER deno
 
-CMD ["run", "-A","--unstable", "./mod.ts"]
+CMD ["run", "-A","-q","--unstable", "--no-check","./mod.ts"]
