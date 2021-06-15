@@ -4,20 +4,17 @@ import { configs } from "./configs.ts";
 import { fileLoader, importDirectory } from "./src/utils/helpers.ts";
 
 console.info(
-  "Beginning Bot Startup Process. This can take a little bit depending on your system. Loading now..."
+  "Beginning Bot Startup Process. This can take a little bit depending on your system. Loading now...",
 );
 
 await Promise.all(
   [
     "./src/commands",
-    "./src/inhibitors",
     "./src/events",
     "./src/arguments",
     "./src/monitors",
-    "./src/tasks",
-    "./src/permissionLevels",
     "./src/events",
-  ].map((path) => importDirectory(Deno.realPathSync(path)))
+  ].map((path) => importDirectory(Deno.realPathSync(path))),
 );
 await fileLoader();
 

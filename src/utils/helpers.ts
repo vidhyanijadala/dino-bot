@@ -84,7 +84,7 @@ export function createCommand(command: Command) {
 export function createSubcommand(
   commandName: string,
   subcommand: Command,
-  retries = 0
+  retries = 0,
 ) {
   const names = commandName.split("-");
 
@@ -105,14 +105,14 @@ export function createSubcommand(
     // If 10 minutes have passed something must have been wrong
     if (retries === 20) {
       return console.error(
-        `Subcommand ${subcommand} unable to be created for ${commandName}`
+        `Subcommand ${subcommand} unable to be created for ${commandName}`,
       );
     }
 
     // Try again in 30 seconds in case this command file just has not been loaded yet.
     setTimeout(
       () => createSubcommand(commandName, subcommand, retries++),
-      30000
+      30000,
     );
     return;
   }
@@ -152,12 +152,16 @@ export async function importDirectory(path: string) {
     if (file.isFile) {
       if (!currentPath.endsWith(".ts")) continue;
       paths.push(
-        `import "${Deno.mainModule.substring(
-          0,
-          Deno.mainModule.lastIndexOf("/")
-        )}/${currentPath.substring(
-          currentPath.indexOf("src/")
-        )}#${uniqueFilePathCounter}";`
+        `import "${
+          Deno.mainModule.substring(
+            0,
+            Deno.mainModule.lastIndexOf("/"),
+          )
+        }/${
+          currentPath.substring(
+            currentPath.indexOf("src/"),
+          )
+        }#${uniqueFilePathCounter}";`,
       );
       continue;
     }
@@ -172,13 +176,15 @@ export async function importDirectory(path: string) {
 export async function fileLoader() {
   await Deno.writeTextFile(
     "fileloader.ts",
-    paths.join("\n").replaceAll("\\", "/")
+    paths.join("\n").replaceAll("\\", "/"),
   );
   await import(
-    `${Deno.mainModule.substring(
-      0,
-      Deno.mainModule.lastIndexOf("/")
-    )}/fileloader.ts#${uniqueFilePathCounter}`
+    `${
+      Deno.mainModule.substring(
+        0,
+        Deno.mainModule.lastIndexOf("/"),
+      )
+    }/fileloader.ts#${uniqueFilePathCounter}`
   );
   paths = [];
 }
@@ -220,7 +226,7 @@ export async function createEmbedsPagination(
       setPage: (newPage: number) => void,
       currentPage: number,
       pageCount: number,
-      deletePagination: () => void
+      deletePagination: () => void,
     ) => Promise<void>;
   } = {
     // deno-lint-ignore require-await
@@ -228,7 +234,7 @@ export async function createEmbedsPagination(
     "↗️": async (setPage) => {
       const question = await sendMessage(
         channelID,
-        "To what page would you like to jump? Say `cancel` or `0` to cancel the prompt."
+        "To what page would you like to jump? Say `cancel` or `0` to cancel the prompt.",
       );
       const answer = await needMessage(authorID, channelID);
 
@@ -260,7 +266,7 @@ export async function createEmbedsPagination(
     // deno-lint-ignore require-await
     "🗑️": async (setPage, currentPage, pageCount, deletePagination) =>
       deletePagination(),
-  }
+  },
 ) {
   if (embeds.length === 0) {
     return;
@@ -281,7 +287,7 @@ export async function createEmbedsPagination(
     embedMessage.channelID,
     embedMessage.id,
     Object.keys(reactions),
-    true
+    true,
   );
 
   let isEnded = false;
@@ -302,7 +308,7 @@ export async function createEmbedsPagination(
         embedMessage.channelID,
         embedMessage.id,
         reaction,
-        authorID
+        authorID,
       );
     }
 
@@ -316,7 +322,7 @@ export async function createEmbedsPagination(
         () => {
           isEnded = true;
           deleteMessageByID(embedMessage.channelID, embedMessage.id);
-        }
+        },
       );
     }
 
