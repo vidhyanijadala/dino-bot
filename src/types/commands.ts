@@ -40,15 +40,11 @@ export interface CommandArgument {
     | "subcommand"
     | "member"
     | "role"
-    | "categorychannel"
     | "newschanne"
     | "textchannel"
     | "voicechannel"
     | "command"
     | "duration"
-    | "snowflake"
-    | "...snowflakes"
-    | "guild";
   /** The function that runs if this argument is required and is missing. */
   missing?: (message: Message) => unknown;
   /** Whether or not this argument is required. Defaults to true. */
