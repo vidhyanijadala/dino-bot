@@ -1,7 +1,7 @@
 import { createCommand, filterCodeBlock } from "../utils/helpers.ts";
 import { Embed } from "./../utils/Embed.ts";
 import { sleep } from "https://deno.land/x/sleep/mod.ts";
-
+//🦕🍱
 createCommand({
   name: "deno",
   description: "commands/deno:EXECUTE",
