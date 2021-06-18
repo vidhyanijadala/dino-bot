@@ -1,7 +1,7 @@
 # 🦕🍱dino🦕🍱
 
 ## 👏 Add dino to your Discord Server
-**To start using dino [just click on this link](https://discord.com/api/oauth2/authorize?client_id=830530080349749248&permissions=59392&scope=bot) and add it to your server!**
+**To start using dino [Go to the top.gg page!](https://top.gg/bot/830530080349749248)**
 
 <img src="https://media.discordapp.net/attachments/814300036665442324/846727185808752660/unknown.png">
 
