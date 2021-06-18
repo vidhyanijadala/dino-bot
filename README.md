@@ -1,4 +1,8 @@
+<div align ="center">
+
 # 🦕🍱dino🦕🍱
+
+<h1>Add dino-bot to your server!</h1>
 
 [![Discord Bots](https://top.gg/api/widget/830530080349749248.svg)](https://top.gg/bot/830530080349749248)
 
@@ -27,4 +31,4 @@ sudo docker build -t deno-bot . && sudo docker run -d deno-bot
 
 ```
 
-
+</div>
