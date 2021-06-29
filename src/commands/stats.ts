@@ -1,6 +1,7 @@
 import { Embed } from "./../utils/Embed.ts";
 import { botID, cache } from "../../deps.ts";
 import { createCommand } from "../utils/helpers.ts";
+let DISCORDENO_VERSION = "10.5.0";
 
 createCommand({
   name: "stats",
@@ -26,6 +27,7 @@ createCommand({
       .addField("Channels:", cache.channels.size.toLocaleString(), true)
       .addField("Messages:", cache.messages.size.toLocaleString(), true)
       .addField("Deno Version:", `v${Deno.version.deno}`, true)
+      .addField("Discordeno version", `v${DISCORDENO_VERSION}`,true)
       .setTimestamp();
 
     return message.send({ embed });
