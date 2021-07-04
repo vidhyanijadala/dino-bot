@@ -1,6 +1,5 @@
 import { createCommand, filterCodeBlock } from "../utils/helpers.ts";
 import { Embed } from "./../utils/Embed.ts";
-import { sleep } from "https://deno.land/x/sleep/mod.ts";
 //🦕🍱
 createCommand({
   name: "deno",
@@ -8,33 +7,24 @@ createCommand({
   botChannelPermissions: ["SEND_MESSAGES"],
   arguments: [{ name: "input", type: "...string", required: true }],
   execute: async function (message, args) {
-    const write = Deno.writeTextFile(
-      "./execute.ts",
-      `${filterCodeBlock(args.input)}`
-    ); // here are going to write the archive to the execute.ts
-    write.then(() => console.log("archive edited!"));
-
-    const cmd = Deno.run({
-      cmd: ["deno", "run","--allow-net", "--no-check", `execute.ts`],
-      env: {
-        NO_COLOR: "1",
+    const rawResponse = await fetch(
+      "https://api-deno-compiler.elpanajose.repl.co/code",
+      {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ code: `${filterCodeBlock(args.input)}` }),
       },
-      stderr: "piped",
-      stdout: "piped",
-      stdin: "null",
-    });
-    await sleep(1);
-    Deno.kill(cmd.pid, Deno.Signal.SIGINT); // kill the procces
+    );
+    const content = await rawResponse.json();
+    var output = content.out;
+    console.log(output);
 
-    const rawOutput = await cmd.output();
-    const rawError = await cmd.stderrOutput();
-    cmd.close();
-    const errorOutput: string = new TextDecoder().decode(rawError);
-    const output: string = new TextDecoder().decode(rawOutput); // here decode de output hex => text
     const embed = new Embed()
       .setColor("random")
-      .addField(`deno output:  ${errorOutput}`, `v${Deno.version.deno} `, true)
-      .setDescription("```\n" + output + "```")
+      .setDescription("```ts\n" + output + "```")
       .setTimestamp();
 
     return message.send({ embed });
