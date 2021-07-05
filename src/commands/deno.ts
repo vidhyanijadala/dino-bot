@@ -8,7 +8,7 @@ createCommand({
   arguments: [{ name: "input", type: "...string", required: true }],
   execute: async function (message, args) {
     const rawResponse = await fetch(
-      "https://api-deno-compiler.elpanajose.repl.co/code",
+      "https://api-deno-compiler.herokuapp.com/code",
       {
         method: "POST",
         headers: {
