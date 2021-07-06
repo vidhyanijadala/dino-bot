@@ -34,11 +34,10 @@ createCommand({
       .addField("Channels:", cache.channels.size.toLocaleString(), true)
       .addField("Messages:", cache.messages.size.toLocaleString(), true)
       .addField("Deno Version:", `v${Deno.version.deno}`, true)
-      .addField("Discordeno version", `v${DISCORDENO_VERSION}`, true)
+      .addField("Discordeno Version:", `v${DISCORDENO_VERSION}`, true)
       .addField("Api Deno Compiler Response Time:", `${ms}`, true)
       .setTimestamp();
 
     return message.send({ embed });
   },
 });
-
