@@ -1,12 +1,12 @@
 import { Embed } from "./../utils/Embed.ts";
-import { botID, cache } from "../../deps.ts";
+import { cache } from "../../deps.ts";
 import { createCommand } from "../utils/helpers.ts";
-let DISCORDENO_VERSION = "10.5.0";
+const DISCORDENO_VERSION = "10.5.0";
 
 createCommand({
   name: "stats",
   guildOnly: true,
-  execute: (message) => {
+  execute: async (message) => {
     let totalMemberCount = 0;
     let cachedMemberCount = 0;
 
@@ -15,6 +15,13 @@ createCommand({
       cachedMemberCount += guild.members.size;
     }
 
+    const rawResponse = await fetch(
+      "https://deno-online-compiler.herokuapp.com/status",
+      { method: "GET" }
+    );
+    const content = await rawResponse.json();
+    let out = content.out;
+    const ms =  out.match(/\d+ms/)
     const embed = new Embed()
       .setAuthor(
         `${message.guild?.botMember?.nick || message.guild?.bot?.tag} Stats`,
@@ -27,9 +34,11 @@ createCommand({
       .addField("Channels:", cache.channels.size.toLocaleString(), true)
       .addField("Messages:", cache.messages.size.toLocaleString(), true)
       .addField("Deno Version:", `v${Deno.version.deno}`, true)
-      .addField("Discordeno version", `v${DISCORDENO_VERSION}`,true)
+      .addField("Discordeno version", `v${DISCORDENO_VERSION}`, true)
+      .addField("Api Deno Compiler Response Time:", `${ms}`, true)
       .setTimestamp();
 
     return message.send({ embed });
   },
 });
+
