@@ -1,4 +1,6 @@
 db
+package-lock.json
 fileloader.ts
 .env
 .vscode
+node_modules
