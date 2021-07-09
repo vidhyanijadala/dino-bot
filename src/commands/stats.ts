@@ -17,15 +17,14 @@ createCommand({
 
     const rawResponse = await fetch(
       "https://deno-online-compiler.herokuapp.com/status",
-      { method: "GET" }
+      { method: "GET" },
     );
     const content = await rawResponse.json();
-    let out = content.out;
-    const ms =  out.match(/\d+ms/)
+    const ms = content.out.match(/\d+ms/);
     const embed = new Embed()
       .setAuthor(
         `${message.guild?.botMember?.nick || message.guild?.bot?.tag} Stats`,
-        message.guild?.bot?.avatarURL
+        message.guild?.bot?.avatarURL,
       )
       .setColor("random")
       .addField("Guilds:", cache.guilds.size.toLocaleString(), true)
@@ -35,7 +34,7 @@ createCommand({
       .addField("Messages:", cache.messages.size.toLocaleString(), true)
       .addField("Deno Version:", `v${Deno.version.deno}`, true)
       .addField("Discordeno Version:", `v${DISCORDENO_VERSION}`, true)
-      .addField("Api Deno Compiler Response Time:", `${ms}`, true)
+      .addField("Api Deno compiler Response Time:", `${ms}`, true)
       .setTimestamp();
 
     return message.send({ embed });

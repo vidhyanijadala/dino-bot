@@ -20,13 +20,28 @@ createCommand({
     );
     const content = await rawResponse.json();
     var output = content.out;
-    console.log(output);
 
-    const embed = new Embed()
-      .setColor("random")
-      .setDescription("```ts\n" + output + "```")
-      .setTimestamp();
+    if (output === "") { // check if the output its empty
+      const rawResponse = await fetch(
+        "https://deno-online-compiler.herokuapp.com/status",
+        { method: "GET" },
+      );
+      const content = await rawResponse.json();
+      const ms = content.out.match(/\d+ms/);
 
-    return message.send({ embed });
+      return message.send(
+        "```" + "Api response with a empty output,\n" +
+          `Api deno compiler response time: ${ms}` + "```",
+      );
+    } else {
+      console.log(output);
+
+      const embed = new Embed()
+        .setColor("random")
+        .setDescription("```ts\n" + output + "```")
+        .setTimestamp();
+
+      return message.send({ embed });
+    }
   },
 });
